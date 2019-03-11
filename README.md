@@ -2,7 +2,7 @@
 
 Private Repository for HW assignments of Stat 133 (Spring 2019)
 
-- Name: Kim Chua
+- Name: Kimberly Chua
 - Github username: kimberlymchua
 - Email: address k.chua0514 [at] email.com
 - Lab section: 102
