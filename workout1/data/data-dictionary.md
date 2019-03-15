@@ -2,6 +2,7 @@
 
 | Variable Names | Names       | Description                         |
 | -------------- |------------ | ----------------------------------- |
+| player     | Player name   | Name of the player |
 | team_name      | Home Team Name   | Name of the home NBA team |
 | game_date      | Date of Game | Date of the game played |
 | season     | Year of the NBA Season   | Year of the NBA Season |
