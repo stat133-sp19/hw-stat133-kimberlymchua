@@ -39,14 +39,8 @@ durant$shot_made_flag <- recode(
   durant$shot_made_flag, 'y' = 'shot_yes', 'n' = 'shot_no')
 thompson$shot_made_flag <- recode(
   thompson$shot_made_flag, 'y' = 'shot_yes', 'n' = 'shot_no')
-#Add a column minute that contains the minute number where a shot occurred. For instance, 
-#if a shot took place during period = 1 and minutes_remaining = 8, 
-#then this should correspond to a value minute = 4. Likewise, if a shot took place during 
-#period = 4 and minutes_remaining = 2 then this should correspond to a value
-#minute = 46. Hint: you can use logical subsetting for these operations (no need to use
-#programming structures that we haven’t covered yet).
+#Add a column minute that contains the minute number where a shot occurred.  
 
-#a total game has 48 minutes
 curry$minutes <- (curry$period * 12) - curry$minutes_remaining
 iguodala$minutes <- (iguodala$period * 12) - iguodala$minutes_remaining
 green$minutes <- (green$period * 12) - green$minutes_remaining
@@ -54,27 +48,40 @@ durant$minutes <- (durant$period * 12) - durant$minutes_remaining
 thompson$minutes <- (thompson$period * 12) - thompson$minutes_remaining
 
 #Use sink() to send the summary() output of each imported data frame into individuals
-text files: andre-iguodala-summary.txt, draymond-green-summary.txt, etc. During
-each sinking operation, the produced summaries should be sent to the output/
-  folder using relative paths.
+sink("output/kevin-durant-summary.txt")
+print(summary(durant))
+sink()
 
+sink("output/klay-thompson-summary.txt")
+print(summary(thompson))
+sink()
+
+sink("output/draymond-green-summary.txt")
+print(summary(green))
+sink()
+
+sink("output/stephen-curry-summary.txt")
+print(summary(curry))
+sink()
+
+sink("output/andre-iguodala-summary.txt")
+print(summary(iguodala))
+sink()
 
 #Use the row binding function rbind() to stack the tables into one single data frame
 #(or tibble object).
 
-
-
+stacked <- rbind(curry, durant, green, iguodala, thompson)
 
 
 #Export (i.e. write) the assembled table as a CSV file shots-data.csv inside the folder
 #data/. Use a relative path for this operation.
 
+write.csv(stacked,file="data/shots-data.csv")
 
+#Use sink() to send the summary() output of the assembled table. 
 
-
-#Use sink() to send the summary() output of the assembled table. Send this output to
-#a text file named shots-data-summary.txt inside the output/ folder. Use a relative
-#path when exporting the R output.
-
-
+sink("output/shots-data-summary.txt")
+print(summary(stacked))
+sink()
 
