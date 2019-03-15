@@ -53,8 +53,7 @@ curl -O https://raw.githubusercontent.com/ucb-stat133/stat133-hws/master/data/nb
 ```
 ##2.1) Download the data
 • You will need to get a copy of the data files to your local repository.
-• The instructions to download the data file should NOT be part of your report.
-
+• The instructions to download the data file should NOT be part of your report
 ##2.2) Data Dictionary
 Create a data dictionary—using markdown syntax—in a separate text file: data-dictionary.md.
 Include names of the variables, and a short description. Most of the variable names are
