@@ -7,6 +7,7 @@
 ## Date: 3/13/2019
 ## Author: kimberly chua
 ##################################################
+library(dplyr)
 
 curry <- read.csv(
   "data/stephen-curry.csv", stringsAsFactors = FALSE)
@@ -27,13 +28,17 @@ green$player <- "Draymond Green"
 durant$player <- "Kevin Durant"
 thompson$player <- "Klay Thompson"
 
-#Change the original values of shot_made_flag to more descriptive values: replace "n"
-#with "shot_no", and "y" with "shot_yes". Hint: you can use logical subsetting for
-#this operation (no need to use programming structures that we haven’t covered yet).
-
-
-
-
+#Change the original values of shot_made_flag to more descriptive values
+curry$shot_made_flag <- recode(
+  curry$shot_made_flag, 'y' = 'shot_yes', 'n' = 'shot_no')
+green$shot_made_flag <- recode(
+  green$shot_made_flag, 'y' = 'shot_yes', 'n' = 'shot_no')
+iguodala$shot_made_flag <- recode(
+  iguodala$shot_made_flag, 'y' = 'shot_yes', 'n' = 'shot_no')
+durant$shot_made_flag <- recode(
+  durant$shot_made_flag, 'y' = 'shot_yes', 'n' = 'shot_no')
+thompson$shot_made_flag <- recode(
+  thompson$shot_made_flag, 'y' = 'shot_yes', 'n' = 'shot_no')
 #Add a column minute that contains the minute number where a shot occurred. For instance, 
 #if a shot took place during period = 1 and minutes_remaining = 8, 
 #then this should correspond to a value minute = 4. Likewise, if a shot took place during 
@@ -41,15 +46,17 @@ thompson$player <- "Klay Thompson"
 #minute = 46. Hint: you can use logical subsetting for these operations (no need to use
 #programming structures that we haven’t covered yet).
 
-
-
+#a total game has 48 minutes
+curry$minutes <- (curry$period * 12) - curry$minutes_remaining
+iguodala$minutes <- (iguodala$period * 12) - iguodala$minutes_remaining
+green$minutes <- (green$period * 12) - green$minutes_remaining
+durant$minutes <- (durant$period * 12) - durant$minutes_remaining
+thompson$minutes <- (thompson$period * 12) - thompson$minutes_remaining
 
 #Use sink() to send the summary() output of each imported data frame into individuals
 text files: andre-iguodala-summary.txt, draymond-green-summary.txt, etc. During
 each sinking operation, the produced summaries should be sent to the output/
   folder using relative paths.
-
-
 
 
 #Use the row binding function rbind() to stack the tables into one single data frame
