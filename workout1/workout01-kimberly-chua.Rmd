@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "workout01-kimberly-chua.Rmd"
 output: github_document
 ---
 
@@ -17,7 +17,7 @@ your computer, that is associated to the github classroom repository for Stat 13
 Don’t worry about how to do this; we’ll provide more information in lab, and in some
 supporting documentation.
 • Create a README.md file and include a clear description of what the HW is about.
-• Create a folder data which will contain the data files.
+• Create a folder data which will contain the data files. 
 • Create a folder code which will contain the R script files.
 • Create a folder output which will contain some R outputs.
 • Create a folder images which will contain some plot images.
