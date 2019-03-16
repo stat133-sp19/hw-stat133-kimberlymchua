@@ -1,0 +1,201 @@
+---
+title: "workout01-kimberly-chua.Rmd"
+output: github_document
+---
+
+##5) Report
+Imagine that you are hired by an Oakland-based sports media company to write an article
+about the shooting statistics of the five GSW players: Iguodala, Green, Durant, Thompson,
+and Curry.
+They want the article to contain at least:
+• three tables about Effective Shooting Percentage (see section 5.1 below).
+• the PNG image of the facetted shot charts (the one obtained in section 4.2)
+Rmd file settings
+• Your Rmd file must be located in the report/ subdirectory.
+• Recall that you need to specify the output field in the yaml header as github_document
+(NOT an html_document). See image below.
+• To insert an image (in a given file), you can use include_graphics(). For example,
+suppose you have a file named 'image1.png' in the working directory of your Rmd file;
+here’s how you could import that image in your report:
+
+##5.1) Effective Shooting Percentage
+Use the data in shots-data.csv to create three tables to summarize Effective Shooting
+percentages by player (import the data in your Rmd file using a relative path).
+```{r}
+library(readr)
+library(dplyr)
+
+nba <- read_csv("../data/shots-data.csv")
+curry_stats <- filter(nba, player == "Stephen Curry")
+green_stats <- filter(nba, player == "Draymond Green")
+iguodala_stats <- filter(nba, player == "Andre Iguodala")
+thompson_stats <- filter(nba, player == "Klay Thompson")
+durant_stats <- filter(nba, player == "Kevin Durant")
+
+```
+
+All three tables should have the format of the following depicted diagram:
+2PT Effective Shooting % by Player: 2 PT Field Goal effective shooting percentage by
+player, arranged in descending order by percentage.
+
+```{r}
+#curry
+two_pts_curry <- filter(curry_stats, shot_type == '2PT Field Goal')
+total_2pts_curry <- sum(two_pts_curry$shot_type == '2PT Field Goal') 
+made_2pts_curry <- sum(two_pts_curry$shot_made_flag == 'shot_yes')
+perc_made_2pts_curry <- made_2pts_curry/total_2pts_curry
+
+#green
+two_pts_green <- filter(green_stats, shot_type == '2PT Field Goal')
+total_2pts_green <- sum(two_pts_green$shot_type == '2PT Field Goal') 
+made_2pts_green <- sum(two_pts_green$shot_made_flag == 'shot_yes')
+perc_made_2pts_green <- made_2pts_green/total_2pts_green
+
+#iguodala
+two_pts_iguodala <- filter(iguodala_stats, shot_type == '2PT Field Goal')
+total_2pts_iguodala <- sum(two_pts_iguodala$shot_type == '2PT Field Goal') 
+made_2pts_iguodala <- sum(two_pts_iguodala$shot_made_flag == 'shot_yes')
+perc_made_2pts_iguodala <- made_2pts_iguodala/total_2pts_iguodala
+
+#durant
+two_pts_durant <- filter(durant_stats, shot_type == '2PT Field Goal')
+total_2pts_durant <- sum(two_pts_durant$shot_type == '2PT Field Goal') 
+made_2pts_durant <- sum(two_pts_durant$shot_made_flag == 'shot_yes')
+perc_made_2pts_durant <- made_2pts_durant/total_2pts_durant
+
+#thompson
+two_pts_thompson <- filter(thompson_stats, shot_type == '2PT Field Goal')
+total_2pts_thompson <- sum(two_pts_thompson$shot_type == '2PT Field Goal') 
+made_2pts_thompson <- sum(two_pts_thompson$shot_made_flag == 'shot_yes')
+perc_made_2pts_thompson <- made_2pts_thompson/total_2pts_thompson
+
+#table
+names <- c('Stephen Curry', 'Draymond Green', 'Andre Iguodala', 'Kevin Durant', 'Klay Thompson')
+total_two_pointers <- c(total_2pts_curry, total_2pts_green, total_2pts_iguodala, total_2pts_durant, total_2pts_thompson)
+made_two_pointers <- c(made_2pts_curry, made_2pts_green, made_2pts_iguodala, made_2pts_durant, made_2pts_thompson)
+percent_made_two_pointers <- c(perc_made_2pts_curry, perc_made_2pts_green, perc_made_2pts_iguodala, perc_made_2pts_durant, perc_made_2pts_thompson)
+
+TwoPT_Effective_Shooting <- arrange(data.frame(names,total = total_two_pointers, made = made_two_pointers, perc_made = percent_made_two_pointers), desc(perc_made))
+TwoPT_Effective_Shooting
+```
+3PT Effective Shooting % by Player: 3 PT Field Goal effective shooting percentage by
+player, arranged in descending order by percentage.
+
+```{r}
+#curry
+three_pts_curry <- filter(curry_stats, shot_type == '3PT Field Goal')
+total_3pts_curry <- sum(three_pts_curry$shot_type == '3PT Field Goal') 
+made_3pts_curry <- sum(three_pts_curry$shot_made_flag == 'shot_yes')
+perc_made_3pts_curry <- made_3pts_curry/total_3pts_curry
+
+#green
+three_pts_green <- filter(green_stats, shot_type == '3PT Field Goal')
+total_3pts_green <- sum(three_pts_green$shot_type == '3PT Field Goal') 
+made_3pts_green <- sum(three_pts_green$shot_made_flag == 'shot_yes')
+perc_made_3pts_green <- made_3pts_green/total_3pts_green
+
+#iguodala
+three_pts_iguodala <- filter(iguodala_stats, shot_type == '3PT Field Goal')
+total_3pts_iguodala <- sum(three_pts_iguodala$shot_type == '3PT Field Goal') 
+made_3pts_iguodala <- sum(three_pts_iguodala$shot_made_flag == 'shot_yes')
+perc_made_3pts_iguodala <- made_3pts_iguodala/total_3pts_iguodala
+
+#durant
+three_pts_durant <- filter(durant_stats, shot_type == '3PT Field Goal')
+total_3pts_durant <- sum(three_pts_durant$shot_type == '3PT Field Goal') 
+made_3pts_durant <- sum(three_pts_durant$shot_made_flag == 'shot_yes')
+perc_made_3pts_durant <- made_3pts_durant/total_3pts_durant
+
+#thompson
+three_pts_thompson <- filter(thompson_stats, shot_type == '3PT Field Goal')
+total_3pts_thompson <- sum(three_pts_thompson$shot_type == '3PT Field Goal') 
+made_3pts_thompson <- sum(three_pts_thompson$shot_made_flag == 'shot_yes')
+perc_made_3pts_thompson <- made_3pts_thompson/total_3pts_thompson
+
+
+#table
+names <- c('Stephen Curry', 'Draymond Green', 'Andre Iguodala', 'Kevin Durant', 'Klay Thompson')
+total_three_pointers <- c(total_3pts_curry, total_3pts_green, total_3pts_iguodala, total_3pts_durant, total_3pts_thompson)
+made_three_pointers <- c(made_3pts_curry, made_3pts_green, made_3pts_iguodala, made_3pts_durant, made_3pts_thompson)
+percent_made_three_pointers <- c(perc_made_3pts_curry, perc_made_3pts_green, perc_made_3pts_iguodala, perc_made_3pts_durant, perc_made_3pts_thompson)
+
+ThreePT_Effective_Shooting <- arrange(data.frame(names,total = total_three_pointers, made = made_three_pointers, perc_made = percent_made_three_pointers), desc(perc_made))
+ThreePT_Effective_Shooting
+```
+
+Effective Shooting % by Player: Overall (i.e. including 2PT and 3PT Field Goals)
+effective shooting percentage by player, arranged in descending order by percentage.
+```{r}
+#curry
+
+total_pts_curry <- sum(total_3pts_curry, total_2pts_curry) 
+total_made_curry <- sum(curry_stats$shot_made_flag == 'shot_yes')
+perc_made_total_curry <- total_made_curry/total_pts_curry
+
+#green
+total_pts_green <- sum(total_3pts_green, total_2pts_green) 
+total_made_green <- sum(green_stats$shot_made_flag == 'shot_yes')
+perc_made_total_green <- total_made_green/total_pts_green
+
+#iguodala
+total_pts_iguodala <- sum(total_3pts_iguodala, total_2pts_iguodala) 
+total_made_iguodala<- sum(iguodala_stats$shot_made_flag == 'shot_yes')
+perc_made_total_iguodala <- total_made_iguodala/total_pts_iguodala
+
+#durant
+total_pts_durant <- sum(total_3pts_durant, total_2pts_durant) 
+total_made_durant <- sum(durant_stats$shot_made_flag == 'shot_yes')
+perc_made_total_durant <- total_made_durant/total_pts_durant
+
+#thompson
+total_pts_thompson <- sum(total_3pts_thompson, total_2pts_thompson) 
+total_made_thompson <- sum(thompson_stats$shot_made_flag == 'shot_yes')
+perc_made_total_thompson <- total_made_thompson/total_pts_thompson
+
+#table
+names <- c('Stephen Curry', 'Draymond Green', 'Andre Iguodala', 'Kevin Durant', 'Klay Thompson')
+total_points <- c(total_pts_curry, total_pts_green, total_pts_iguodala, total_pts_durant, total_pts_thompson)
+made_total_points <- c(total_made_curry, total_made_green, total_made_iguodala, total_made_durant, total_made_thompson)
+percent_made_total <- c(perc_made_total_curry, perc_made_total_green, perc_made_total_iguodala, perc_made_total_durant, perc_made_total_thompson)
+
+Total_Effective_Shooting <- arrange(data.frame(names,total = total_points, made = made_total_points, perc_made = percent_made_total), desc(perc_made))
+Total_Effective_Shooting
+```
+
+```{r}
+TwoPT_Effective_Shooting
+ThreePT_Effective_Shooting
+Total_Effective_Shooting
+```
+
+
+##5.2) Narrative
+#Article
+Here’s a list of general specifications for the text in your article:
+• Introduction: Write a clear and captivating introduction that grabs the reader’s
+attention. And describe the purpose of the report.
+
+• Organize the content: Organize the content of your report in different sections:
+e.g. motivation, background, data, analysis, discussion, conclusions, and references.
+• Images: You may include some images like pictures about players, or other figures in
+addition to the requested facetted shot chart.
+![stats]("../images/gsw-shots-charts.png")
+
+• Code: You may also include code snippets (e.g. code chunks) with output that supports
+your narrative.
+
+• Take-home message: Make sure to include a summarizing statement of the content
+in your article. If the reader had to remember one major thing from your article, what
+would that be?
+
+• Length: How long should your article be? There is not really a unique answer for this
+question. It depends on what you decide to write about. Try writing a post no shorter
+than 1,000 words, and preferably no longer than 5,000 words (these values are just a
+recommendation).
+
+To give you some inspiration, here are some real articles about GSW players (from different
+seasons) looking at different performance aspects:
+• https://on.nba.com/2Vv1t2u
+• https://bit.ly/2HcDJMD
+• https://bit.ly/2BWTmoc
+• https://bit.ly/2EnDkUD
