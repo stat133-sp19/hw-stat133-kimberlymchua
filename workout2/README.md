@@ -1,11 +1,11 @@
-#Workout2 README 
+# Workout2 README 
 
-Author: Kimberly Chua
-Date: April 19, 2019
-GSI: Dodo Qian
-Section: 102
+- Author: Kimberly Chua
+- Date: April 19, 2019
+- GSI: Dodo Qian
+- Section: 102
 
-####**Files & Descriptions:**
+#### **Files & Descriptions:**
 
 *Files of workout2:*
 
