@@ -10,61 +10,69 @@
 library(shiny)
 library(ggplot2)
 # Define UI for application that draws a histogram
-ui <- fluidPage(width = 12,
+ui <- fluidPage(
+  
   # Application title
   titlePanel("E-Z Invest"),
-  # Sidebar with a slider input for the initial amount 
   
-  column(width = 4,
+  # Sidebar with a slider input for the initial amount 
+  fluidRow(width = 15,
+  
+  
+  column(width = 5,
       sliderInput("initial",
                   "Initial Amount",
                   min = 0,
                   max = 100000,
                   value = 1000,
                   step = 500),
+      
   # Sidebar with a slider input for the annual contribution 
       sliderInput("annual",
                   "Annual Contribution",
                   min = 0,
                   max = 50000,
                   value = 2000,
-                  step = 500),
-    column(width = 4,
+                  step = 500)),
+  
+    column(width = 5,
       sliderInput("return",
-                  "Return Rate",
+                  "Return Rate (in percentages)",
                   min = 0,
                   max = 0.2,
                   value = 0.05,
                   step = 0.001), 
        
       sliderInput("growth",
-                  "Growth Rate",
+                  "Growth Rate (in percentages)",
                   min = 0,
                   max = 0.2,
                   value = 0.02,
                   step = 0.001)), 
   
-      column(width = 4,
+      column(width = 5,
       sliderInput("years",
                   "Years",
                   min = 0,
                   max = 50,
                   value = 20,
-                  step = 1)), 
+                  step = 1), 
     
       selectInput('facet',
-            label = 'Facet:', choices = list(
-              'Yes' = TRUE,'No' = FALSE),
+            label = 'Facet:', 
+            choices = list(
+              'Yes' = TRUE,
+              'No' = FALSE),
             selected = FALSE
-                  ),
+                  )),
 
 # Show a plot of the generated distribution
-mainPanel(width = 12,
+mainPanel(width = 15,
           titlePanel('Timeline'),
           plotOutput("distPlot"),
           titlePanel('Balances'),
           verbatimTextOutput('view')
-))
+)))
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
