@@ -20,7 +20,7 @@ ui <- fluidPage(width = 12,
                   "Initial Amount",
                   min = 0,
                   max = 100000,
-                  value = 1000
+                  value = 1000,
                   step = 500)),
   # Sidebar with a slider input for the annual contribution 
       column(width = 4,
@@ -28,47 +28,35 @@ ui <- fluidPage(width = 12,
                   "Annual Contribution",
                   min = 0,
                   max = 50000,
-                  value = 2000
+                  value = 2000,
                   steps = 500),
   
-      sliderInput("return rt",
+      sliderInput("return",
                   "Return Rate",
                   min = 0,
                   max = 0.2,
-                  value = 0.05
+                  value = 0.05,
                   steps = 0.001)), 
        
-      sliderInput("growth rt",
+      sliderInput("growth",
                   "Growth Rate",
                   min = 0,
                   max = 0.2,
-                  value = 0.02
+                  value = 0.02,
                   steps = 0.001), 
  
-      sliderInput("yrs",
+      sliderInput("years",
                   "Years",
                   min = 0,
                   max = 50,
-                  value = 20
-                  steps = 1)), 
+                  value = 20,
+                  steps = 1), 
     
       selectInput('facet',
             label = 'Facet:', choices = list(
               'Yes' = TRUE,'No' = FALSE),
             selected = FALSE
-                  )
-
-    
-    # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("plot")
-    )
-  )
-)
-
-
-______
-
+                  ),
 
 # Show a plot of the generated distribution
 mainPanel(width = 12,
@@ -76,7 +64,7 @@ mainPanel(width = 12,
           plotOutput("distPlot"),
           titlePanel('Balances'),
           verbatimTextOutput('view')
-)
+))
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
@@ -102,19 +90,29 @@ server <- function(input, output) {
     ### MODE 1: 
     no_contrib <- rep(0, input$years)
     for(i in 0:input$years){
-      value <- future_value(amount = input$amount, rate = (input$rate)*0.01, years = i)
+      value <- future_value(amount = input$initial, 
+                            rate = (input$return)*0.01, 
+                            years = i)
       no_contrib[i+1] <- value
     }
+
     ### MODE 2: 
     fixed_contrib <- rep(0, input$years)
     for(i in 0:input$years){
-      value <- future_value(amount = input$amount, rate = (input$rate)*0.01, years = i) + annuity(contrib = input$contrib, rate = (input$rate)*0.01, years = i)
+      value <- future_value(amount = input$initial,
+                            rate = (input$return)*0.01,
+                            years = i) + annuity(contrib = input$annual,
+                            rate = (input$return)*0.01, years = i)
       fixed_contrib[i+1] <- value
     }
     ### MODE 3: 
     growing_contrib <- rep(0, input$years)
     for(i in 0:input$years){
-      value <- future_value(amount = input$amount, rate = (input$rate)*0.01, years = i) + growing_annuity(contrib = input$contrib, rate = (input$rate)*0.01, growth = (input$growth)*0.01, years = i)
+      value <- future_value(amount = input$initial,
+                            rate = (input$return)*0.01,
+                            years = i) + growing_annuity(contrib = input$annual,
+                            rate = (input$return)*0.01,
+                            growth = (input$growth)*0.01, years = i)
       growing_contrib[i+1] <- value
     }
     
@@ -167,23 +165,35 @@ server <- function(input, output) {
     ### MODE 1: 
     no_contrib <- rep(0, input$years)
     for(i in 0:input$years){
-      value <- future_value(amount = input$amount, rate = (input$rate)*0.01, years = i)
+      value <- future_value(amount = input$initial, 
+                            rate = (input$return)*0.01, 
+                            years = i)
       no_contrib[i+1] <- value
     }
     ### MODE 2: 
-    fixed_contrib <- rep(0, input$years)
+    fixed <- rep(0, input$years)
     for(i in 0:input$years){
-      value <- future_value(amount = input$amount, rate = (input$rate)*0.01, years = i) + annuity(contrib = input$contrib, rate = (input$rate)*0.01, years = i)
-      fixed_contrib[i+1] <- value
+      value <- future_value(amount = input$initial, 
+                            rate = (input$return)*0.01, 
+                            years = i) + annuity(contrib = input$annual,
+                           rate = (input$return)*0.01, years = i)
+      fixed[i+1] <- value
     }
     ### MODE 3: 
-    growing_contrib <- rep(0, input$years)
+    growing <- rep(0, input$years)
     for(i in 0:input$years){
-      value <- future_value(amount = input$amount, rate = (input$rate)*0.01, years = i) + growing_annuity(contrib = input$contrib, rate = (input$rate)*0.01, growth = (input$growth)*0.01, years = i)
-      growing_contrib[i+1] <- value
+      value <- future_value(amount = input$initial,
+                            rate = (input$return)*0.01,
+                            years = i) + growing_annuity(contrib = input$annual, 
+                            rate = (input$return)*0.01,
+                             growth = (input$growth)*0.01, years = i)
+      growing[i+1] <- value
     }
     
-    modalities <- data.frame('year' = 0:input$years, 'no_contrib' = no_contrib, 'fixed_contrib' = fixed_contrib, 'growing_contrib' = growing_contrib)
+    modalities <- data.frame('year' = 0:input$years, 
+                             'no_contrib' = no_contrib,
+                             'fixed_contrib' = fixed,
+                             'growing_contrib' = growing)
     
     modalities
   })
