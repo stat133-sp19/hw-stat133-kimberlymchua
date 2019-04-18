@@ -16,10 +16,10 @@ ui <- fluidPage(
   titlePanel("E-Z Invest"),
   
   # Sidebar with a slider input for the initial amount 
-  fluidRow(width = 15,
+  fluidRow(width = 12,
   
   
-  column(width = 5,
+  column(width = 4,
       sliderInput("initial",
                   "Initial Amount",
                   min = 0,
@@ -35,7 +35,7 @@ ui <- fluidPage(
                   value = 2000,
                   step = 500)),
   
-    column(width = 5,
+    column(width = 4,
       sliderInput("return",
                   "Return Rate (in percentages)",
                   min = 0,
@@ -50,7 +50,7 @@ ui <- fluidPage(
                   value = 0.02,
                   step = 0.001)), 
   
-      column(width = 5,
+      column(width = 4,
       sliderInput("years",
                   "Years",
                   min = 0,
@@ -67,7 +67,7 @@ ui <- fluidPage(
                   )),
 
 # Show a plot of the generated distribution
-mainPanel(width = 15,
+mainPanel(width = 12,
           titlePanel('Timeline'),
           plotOutput("distPlot"),
           titlePanel('Balances'),
