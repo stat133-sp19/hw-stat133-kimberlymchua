@@ -5,8 +5,8 @@ account: kimberlymchua
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 874460
-bundleId: 2020625
+bundleId: 2020627
 url: https://kimberlymchua.shinyapps.io/workout2/
-when: 1555571451.67546
+when: 1555571582.36868
 asMultiple: FALSE
 asStatic: FALSE
