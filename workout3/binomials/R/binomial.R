@@ -128,8 +128,8 @@ bin_distribution <- function(trials, prob){
 }
 
 #' @export
-plot.bindis <- function(bindis){
-  plot(bin_distribution$success, bin_distributio $probability, freqs, type = "n", ylim = c(0, 1), las = 1,
+plot.bindis <- function(bin_distribution){
+  plot(bin_distribution$success, bin_distribution$probability, freqs, type = "n", ylim = c(0, 1), las = 1,
        xlab = "successes", 0:trials,
        ylab = "probability", bin_distribution$probability,
   abline(h = 0.5, col = "gray70", lwd = 1.5))
@@ -143,7 +143,8 @@ plot.bindis <- function(bindis){
 #' @export
 #' @examples
 #' # default
-#' bin_cumulative(trials = 5, prob = 0.5)
+#' dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+#' plot(dis2)
 
 bin_cumulative <- function(trials, prob){
   bincum <- bin_distribution(trials, prob)
@@ -151,3 +152,87 @@ bin_cumulative <- function(trials, prob){
   return(bincum)
 }
 
+#' @export
+plot.bincum <- function(bin_cumulative){
+  plot(bin_cumulative$success, bin_cumulative$probability, freqs, type = "n", ylim = c(0, 1), las = 1,
+       xlab = "successes", 0:trials,
+       ylab = "probability", bin_cumulative$bincum,
+       abline(h = 0.5, col = "gray70", lwd = 1.5))
+}
+
+#' @title bin_variable
+#' @description to return an object of a class
+#' @param trials is the numbers of trials
+#' @param prob is the probability
+#' @return object of a class "binvar"
+#' @export
+#' @examples
+#' # default
+#' bin1 <- bin_variable(trials = 10, p = 0.3)
+#' bin1
+#'
+
+bin_variable <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+}
+
+#' @export
+print.binvar <- function(bin_variable){
+  print("Binomial Variable")
+
+  print("Parameters")
+  cat("- number of trials:", trials)
+  cat("- prob of success:", prob)
+}
+
+#' @export
+summary.binvar <- function(bin_variable){
+  print("Summary Binomial")
+
+  print("Parameters")
+  cat("- number of trials:", trials)
+  cat("- prob of success:", prob)
+
+  print("Measures")
+  cat("- mean:", aux_mean(trials, prob))
+  cat("- variance:", aux_variance(trials, prob))
+  cat("- mode:", aux_mode(trials, prob))
+  cat("- skewness:", aux_mode(trials, prob))
+  cat("- kurtosis:", aux_mode(trials, prob))
+}
+
+bin_mean <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  mean <- aux_mean(trials, prob)
+  return(mean)
+}
+
+bin_variance <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  variance <- aux_variance(trials, prob)
+  return(variance)
+}
+
+bin_mode <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  mode <- aux_mode(trials, prob)
+  return(mode)
+}
+
+bin_skewness <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  skewness <- aux_skewness(trials, prob)
+  return(skewness)
+}
+
+bin_kurtosis <- function(trials, prob){
+  check_trials(trials)
+  check_prob(prob)
+  kurtosis <- aux_kurtosis(trials, prob)
+  return(kurtosis)
+}
