@@ -1,0 +1,13 @@
+Package: binomials
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Kimberly Chua
+Maintainer: Kimberly Chua <k.chua0514@berkeley.edu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: no
+Packaged: 2019-05-03 06:39:42 UTC; kimberlychua
