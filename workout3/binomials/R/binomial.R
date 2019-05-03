@@ -4,7 +4,6 @@
 #' @param n is the number of trials
 #' @param k is the number of successes
 #' @return the number of calculations in which k  successes can occur in n trials
-#' @seealso \code{\link{bin_probability}}
 #' @export
 #' @examples
 #' # default
