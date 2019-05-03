@@ -176,7 +176,7 @@ plot.bincum <- function(bin_cumulative){
 bin_variable <- function(trials, prob){
   check_trials(trials)
   check_prob(prob)
-  result <- list(trials, prob)
+  result <-
   class(binvar) = c("binvar")
 }
 
