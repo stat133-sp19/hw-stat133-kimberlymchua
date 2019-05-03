@@ -34,13 +34,18 @@
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
-* checking R code for possible problems ... OK
+* checking R code for possible problems ... NOTE
+bin_choose: no visible binding for global variable ‘trials’
+bin_choose: no visible binding for global variable ‘success’
+Undefined global functions or variables:
+  success trials
 * checking Rd files ... OK
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... WARNING
 Undocumented code objects:
-  ‘check_prob’
+  ‘aux_kurtosis’ ‘aux_mean’ ‘aux_mode’ ‘aux_skewness’ ‘aux_variance’
+  ‘bin_choose’ ‘check_prob’ ‘check_success’ ‘check_trials’
 All user-level objects in a package should have documentation entries.
 See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
@@ -51,6 +56,10 @@ Functions or methods with usage in documentation object 'hello' but not in code:
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
+* checking files in ‘vignettes’ ... WARNING
+Files in the 'vignettes' directory but no files in 'inst/doc':
+  ‘introduction.Rmd’
+Package has no Sweave vignette sources and no VignetteBuilder field.
 * checking examples ... ERROR
 Running examples in ‘binomials-Ex.R’ failed
 The error most likely occurred in:
@@ -70,4 +79,4 @@ This typically indicates Rd problems.
 * checking PDF version of manual without hyperrefs or index ... ERROR
 Re-running with no redirection of stdout/stderr.
 * DONE
-Status: 2 ERRORs, 3 WARNINGs
+Status: 2 ERRORs, 4 WARNINGs, 1 NOTE
