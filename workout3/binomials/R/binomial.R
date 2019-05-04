@@ -198,11 +198,11 @@ summary.binvar <- function(bin_variable){
   cat("- prob of success:", prob)
 
   print("Measures")
-  cat("- mean:", aux_mean(trials, prob))
-  cat("- variance:", aux_variance(trials, prob))
-  cat("- mode:", aux_mode(trials, prob))
-  cat("- skewness:", aux_mode(trials, prob))
-  cat("- kurtosis:", aux_mode(trials, prob))
+  cat("- mean:", bin_mean(trials, prob))
+  cat("- variance:", bin_variance(trials, prob))
+  cat("- mode:", bin_mode(trials, prob))
+  cat("- skewness:", bin_mode(trials, prob))
+  cat("- kurtosis:", bin_mode(trials, prob))
 }
 
 bin_mean <- function(trials, prob){
