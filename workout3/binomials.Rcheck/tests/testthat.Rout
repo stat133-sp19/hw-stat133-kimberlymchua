@@ -19,9 +19,9 @@ Type 'q()' to quit R.
 > library(binomials)
 > 
 > test_check("binomials")
-══ testthat results  ══════════════════════════════════
+══ testthat results  ═════════════════════════════════════
 OK: 48 SKIPPED: 0 FAILED: 0
 > 
 > proc.time()
    user  system elapsed 
-  0.718   0.110   1.141 
+  0.590   0.079   0.694 

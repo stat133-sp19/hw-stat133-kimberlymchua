@@ -22,15 +22,9 @@ library(binomials)
 ```
 
 This binomial package contains functions to help calculate probabilites of a binomial random variable.  
-
-A simple example of a binomial random variable involves the number of Heads you get when tossing a coin a specific number of times.  
-
-- example with a fair coin: `P(X = 3 heads in 4 tosses, with a 50% chance of getting heads)`    
-- example without a fair coin: `P(X = 3 heads in 4 tosses, with a 75% chance of getting heads)`    
-
 ---
 
-##Summary measures-- Private Auxiliary Functions
+##Private Auxiliary Functions: Summary Measures
 There are many **Summary measures** that can be used to look at a random variable X.
 
 **aux_mean()**
@@ -90,8 +84,8 @@ There are many **Summary measures** that can be used to look at a random variabl
     
 ---
 
-## Checker Functions-- Private Auxiliary Functions
-These **checker function** makes sure user inputs meet certain criteria in order for the binomial package functions to work correctly
+##Private Auxiliary Functions: Checker Functions
+These **checker functions** ensures that certain criteria are met so that the package works smoothly.
 
 **check_prob()**
 
@@ -120,8 +114,8 @@ These **checker function** makes sure user inputs meet certain criteria in order
 
 ---
 
-## Main Functions
-The **main functinos** utilize both the **checker functions** and **summary functions** to compute various binomial calculations.
+## Main Binomial Functions
+The **main binomial functions** utilize both the **checker functions** and **summary functions** to compute various binomial calculations.
 
 **bin_choose()**
 
@@ -163,24 +157,16 @@ The **main functinos** utilize both the **checker functions** and **summary func
     - *prob*: an integer that gives the probability of success
 - Example
     - `bin_distribution(trials = 5, prob = 0.5)`
-```{r, eval=FALSE}
+```{r, echo=FALSE}
 bin_distribution <- function(trials, prob){
   bindis <- data.frame(success=(0:trials), probability = bin_probability(success = 0:trials, trials = trials, prob = prob))
   class(bindis) = c("bindis", "data.frame")
   return(bindis)
 }
 
-bin_distribution(trials = 5, prob = 0.5)
 ```
 - It contains the *method* **plot.bindis()** that will graph a barplot to display the probability histogram of a binomial distribution object '*bindis*'.
-```{r, eval=FALSE}
-plot.bindis <- function(x, ...){
-  graphics::barplot(
-    height = x$probability, xlab = 'successes', ylab = 'probability',
-    names.arg = x$success, col = #000080
-  )
-}
-```
+
   
 **bin_cumulative()**
 
@@ -194,7 +180,7 @@ plot.bindis <- function(x, ...){
 - Example
     - `bin_cumulative(trials = 5, prob = 0.5)`
   
-```{r, eval=FALSE}
+```{r, echo=FALSE}
 bin_cumulative <- function(trials, prob){
   test <- bin_probability(success = 0:trials, trials = trials, prob = prob)
   cum_sum <- cumsum(test)
@@ -202,15 +188,8 @@ bin_cumulative <- function(trials, prob){
   class(dframe) <- c("bincum", "data.frame")
   return(dframe)
 }
-bin_cumulative(trials = 5, prob = 0.5)
 ```
 - It contains the *method* **plot.bincum()** that plots the cumulative probabilities of a binomial distribution object '*bincum*'.
-```{r, eval=FALSE}
-plot.bincum <- function(dat){
-  plot(dat$cumulative, ylab = 'cumulative', xlab = 'successes')
-  lines(dat$cumulative)
-}
-```
 
 
 **bin_variable()**
@@ -226,13 +205,7 @@ plot.bincum <- function(dat){
     - `bin_variable(trials = 10, prob = 0.3)`  
     
 - It contains the *method* **print.binvar()** that prints the contents of an object '*binvar*'.  
-```{r, eval=FALSE}
-print.binvar(bin_variable(10, 0.3))
-```
 - It contains the *method* **summary.binvar()** that prints the contents of an object.
-```{r, eval=FALSE}
-summary.bin_var(trials = 10, prob = 0.3)
-```
 
 **bin_mean()**
  
