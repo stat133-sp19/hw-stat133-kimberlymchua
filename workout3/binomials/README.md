@@ -32,5 +32,5 @@ Install the development version from GitHub via the package `"devtools"`:
 # development version from GitHub:
 #install.packages("devtools") 
 # install "binomial" 
-devtools::install_github("hw-stat133-UpwithSylvia/workout03/binomial")
+devtools::install_github("hw-stat133-kimberlymchua/workout3")
 ```
