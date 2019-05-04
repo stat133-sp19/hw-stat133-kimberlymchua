@@ -1,4 +1,13 @@
+# =============================================
+# Devtools workflow
+# =============================================
 library(devtools)
 
-devtools::my_vignettes(introduction.Rmd)
-devtools::build_vignettes
+
+devtools::document()          # generate documentation
+devtools::check_man()         # check documentation
+devtools::test()              # run tests
+devtools::build()             # build bundle
+devtools::install()           # install package
+devtools::check()
+

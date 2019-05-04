@@ -89,8 +89,8 @@ bin_cumulative <- function(trials, prob){
   check_trials(trials)
   check_prob(prob)
   results <- bin_distribution(trials = trials, prob = prob)
-  results$cumulative <- cumsum(results$prob)
-  class(results) <- c("bincum", "data.frame")
+  results$cumulative <- cumsum(frame$probability)
+  class(frame) <- c("bincum", "data.frame")
   return(results)
 }
 

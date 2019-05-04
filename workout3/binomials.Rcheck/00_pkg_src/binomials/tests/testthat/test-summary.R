@@ -1,4 +1,4 @@
-context("Context for Summary")
+context("Summary Functions Test")
 
 test_that("aux_mean has a valid probability", {
 

@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with binomial"
+title: "Getting Started with binomials"
 author: "Kimberly Chua"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

@@ -34,7 +34,7 @@ test_that("bin_distribution has valid parameters and fails if it has invalid par
 
 test_that("bin_cumulative has valid parameters", {
 
-  expect_output(bin_cumulative(trials = 5, prob = 0.1))
+  expect_output(bin_cumulative(trials = 5, prob = 0.1), regexp = NA)
   expect_error(bin_cumulative(trials = -5, prob = 0.1))
   expect_error(bin_cumulative(trials = 5, prob = -0.1))
 
