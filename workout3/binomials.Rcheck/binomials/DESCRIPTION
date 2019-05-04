@@ -4,8 +4,11 @@ Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Kimberly Chua
 Maintainer: Kimberly Chua <k.chua0514@berkeley.edu>
-Description: This package binomials will allow the user to explore how to calcaluate the binomial given the successes of trials, trials and the chance of getting a success in a trial.
+Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
+NeedsCompilation: no
+Packaged: 2019-05-04 05:32:55 UTC; kimberlychua
+Built: R 3.5.0; ; 2019-05-04 05:33:01 UTC; unix

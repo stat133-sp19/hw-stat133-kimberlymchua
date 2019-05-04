@@ -25,8 +25,8 @@ test_that("bin_probability has valid parameters and fails for invalid parameters
 
 test_that("bin_distribution has valid parameters and fails if it has invalid parameters", {
 
-  expect_output(bin_distribution(trials = 10, prob = 0.5), regexp = NA)
   expect_error(bin_distribution(trials = 10, prob = 5))
+  expect_error(bin_distribution(trials = 10, prob = -0.1))
   expect_error(bin_distribution(trials = -10, prob = 0.5))
 
 })
@@ -34,8 +34,9 @@ test_that("bin_distribution has valid parameters and fails if it has invalid par
 
 test_that("bin_cumulative has valid parameters", {
 
-  expect_output(bin_cumulative(trials = 5, prob = 0.1), regexp = NA)
   expect_error(bin_cumulative(trials = -5, prob = 0.1))
   expect_error(bin_cumulative(trials = 5, prob = -0.1))
+  expect_error(bin_cumulative(5,2))
 
 })
+

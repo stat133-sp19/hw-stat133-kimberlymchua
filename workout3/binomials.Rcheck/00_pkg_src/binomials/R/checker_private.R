@@ -1,31 +1,24 @@
+##**Private Auxiliary Checker Functions**
+
 #private auxiliary function to check if probability is a valid probability between 0 and 1
 
-check_prob <- function(prob) {
-  if (prob > 1) {
-    stop("probability has to be a number between 0 and 1")
-  }
-  else if (class(prob) != "numeric") {
-    stop("prob input class has to be a numeric")
-  }
-  else if (prob < 0) {
-    stop("probability has to be a number between 0 and 1")
-  }
-  else (prob <= 1 & prob >= 0) {
+check_prob <- function(prob){
+  if (prob >= 0 & prob <= 1){
     return(TRUE)
+  }
+  else {
+    stop("probability value is invalid")
   }
 }
 
 #private auxilitary function to check if trials is a valid number of trials
 
 check_trials <- function(trials){
-  if (trials < 0) {
-    stop("invalid trials value")
-  }
-  else if (class(trials) != "numeric") {
-    stop("trials input class has to be numeric")
-  }
-  else (trials == as.integer(trials) & trials >= 0){
+  if (trials == floor(trials) & trials >= 0){
     return(TRUE)
+  }
+  else {
+    stop("invalid value for trials")
   }
 }
 

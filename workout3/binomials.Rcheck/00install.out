@@ -1,9 +1,10 @@
 * installing *source* package ‘binomials’ ...
 ** R
-Error in parse(outFile) : 
-  /Users/kimberlychua/Desktop/hw-stat133-kimberlymchua/workout3/binomials.Rcheck/00_pkg_src/binomials/R/checker_private.R:13:32: unexpected '{'
-12:   }
-13:   else (prob <= 1 & prob >= 0) {
-                                   ^
-ERROR: unable to collate and parse R files for package ‘binomials’
-* removing ‘/Users/kimberlychua/Desktop/hw-stat133-kimberlymchua/workout3/binomials.Rcheck/binomials’
+** byte-compile and prepare package for lazy loading
+** help
+No man pages found in package  ‘binomials’ 
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (binomials)

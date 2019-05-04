@@ -1,125 +1,42 @@
 context("Summary Functions Test")
 
-test_that("aux_mean has a valid probability", {
+test_that("aux_mean has a valid parameters and fails with invalid parameters", {
+  expect_equal(aux_mean(10, 0.3), 3)
+  expect_equal(aux_mean(25, 0.6), 15)
+  expect_error(aux_mean(10,"cal"))
+  expect_error(aux_mean("cal",-2))
 
-  expect_true(aux_mean(prob = 1))
-  expect_true(aux_mean(prob < 1))
-  expect_true(aux_mean(prob > 0))
-  expect_true(aux_mean(prob = 0))
 })
 
-test_that("aux_mean has a valid amount of trials", {
+test_that("aux_variance has a valid parameters and fails with invalid parameters", {
 
-  expect_true(aux_mean(trials > 0))
-})
-
-test_that("aux_mean has an invalid amount of trials", {
-
-  expect_error(aux_mean(trials < 0))
-})
-
-test_that("aux_mean has an invalid probablity", {
-
-  expect_error(aux_mean(prob > 1))
-  expect_error(aux_mean(prob < 0))
+  expect_equal(aux_variance(10, 0.3), 2.1)
+  expect_equal(aux_variance(25, 0.6), 6)
+  expect_error(aux_variance(10,"cal"))
+  expect_error(aux_variance("cal",-2))
 })
 
 
-test_that("aux_variance has a valid probability", {
+test_that("aux_mode has a valid parameters and fails with invalid parameters", {
 
-  expect_true(aux_variance(prob = 1))
-  expect_true(aux_variance(prob < 1))
-  expect_true(aux_variance(prob > 0))
-  expect_true(aux_variance(prob = 0))
-})
-
-test_that("aux_variance has a valid amount of trials", {
-
-  expect_true(aux_variance(trials > 0))
-})
-
-test_that("aux_variance has an invalid amount of trials", {
-
-  expect_error(aux_variance(trials < 0))
-})
-
-test_that("aux_variance has an invalid probablity", {
-
-  expect_error(aux_variance(prob > 1))
-  expect_error(aux_variance(prob < 0))
+  expect_equal(aux_mode(10, 0.3), 3)
+  expect_equal(aux_mode(25, 0.6), 15)
+  expect_error(aux_mode(10,"cal"))
+  expect_error(aux_mode("cal",-2))
 })
 
 
-test_that("aux_mode has a valid probability", {
+test_that("aux_skewness has a valid parameters and fails with invalid parameters", {
 
-  expect_true(aux_mode(prob = 1))
-  expect_true(aux_mode(prob < 1))
-  expect_true(aux_mode(prob > 0))
-  expect_true(aux_mode(prob = 0))
-})
-
-test_that("aux_mode has a valid amount of trials", {
-
-  expect_true(aux_mode(trials > 0))
-})
-
-test_that("aux_mode has an invalid amount of trials", {
-
-  expect_error(aux_mode(trials < 0))
-})
-
-test_that("aux_mode has an invalid probablity", {
-
-  expect_error(aux_mode(prob > 1))
-  expect_error(aux_mode(prob < 0))
+  expect_error(aux_skewness(10,"cal"))
+  expect_error(aux_skewness("cal",-2))
+  expect_length(aux_skewness(15,0.5),1)
 })
 
 
-test_that("aux_skewness has a valid probability", {
+test_that("aux_kurtosis has a valid parameters and fails with invalid parameters", {
 
-  expect_true(aux_skewness(prob = 1))
-  expect_true(aux_skewness(prob < 1))
-  expect_true(aux_skewness(prob > 0))
-  expect_true(aux_skewness(prob = 0))
-})
-
-test_that("aux_skewness has a valid amount of trials", {
-
-  expect_true(aux_skewness(trials > 0))
-})
-
-test_that("aux_skewness has an invalid amount of trials", {
-
-  expect_error(aux_skewness(trials < 0))
-})
-
-test_that("aux_skewness has an invalid probablity", {
-
-  expect_error(aux_skewness(prob > 1))
-  expect_error(aux_skewness(prob < 0))
-})
-
-
-test_that("aux_kurtosis has a valid probability", {
-
-  expect_true(aux_kurtosis(prob = 1))
-  expect_true(aux_kurtosis(prob < 1))
-  expect_true(aux_kurtosis(prob > 0))
-  expect_true(aux_kurtosis(prob = 0))
-})
-
-test_that("aux_kurtosis has a valid amount of trials", {
-
-  expect_true(aux_kurtosis(trials > 0))
-})
-
-test_that("aux_skewness has an invalid amount of trials", {
-
-  expect_error(aux_skewness(trials < 0))
-})
-
-test_that("aux_skewness has an invalid probablity", {
-
-  expect_error(aux_skewness(prob > 1))
-  expect_error(aux_skewness(prob < 0))
+  expect_error(aux_kurtosis(10,"cal"))
+  expect_error(aux_kurtosis("cal",-2))
+  expect_equal(aux_kurtosis(20,0.1),0.2)
 })

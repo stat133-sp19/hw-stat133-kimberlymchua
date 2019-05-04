@@ -1,3 +1,5 @@
+##**Private Auxiliary Functions**
+
 #private aux function to find mean
 aux_mean <- function(trials, prob){
   #mean of binomial is np

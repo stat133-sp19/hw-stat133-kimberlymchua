@@ -8,7 +8,7 @@
 Overview
 --------
 
-The package `"binomials"` is an R package that implements functions for calculating probabilities of a Binomial random variable, and related calculations such as the probability distribution, the expected value, variance, etc.
+The package `"binomials"` is an R package that contains functions for calculating probabilities of the Binomial, and related calculations such as the probability distribution, the expected value, variance, etc.
 
 -   `bin_variable()` will initiate a binomial variable
 -   `summary()` will provide a summary of the given binomial variable
@@ -23,14 +23,3 @@ Motivation
 
 This package has been developed to help people better understand the concepts behind the creation of an R package as well as how the Binomial package works.
 
-Installation
-------------
-
-Install the development version from GitHub via the package `"devtools"`:
-
-```{r}
-# development version from GitHub:
-#install.packages("devtools") 
-# install "binomial" 
-devtools::install_github("hw-stat133-kimberlymchua/workout3")
-```

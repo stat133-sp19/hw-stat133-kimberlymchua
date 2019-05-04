@@ -1,3 +1,5 @@
+##**Main Binomial Functions**
+
 #' @title binomial choose
 #' @description calculates the number of combinations in which k successes can occur in n trials
 #' @param prob a probability value
@@ -69,9 +71,8 @@ bin_distribution <- function(trials, prob){
 
 #' @export
 plot.bindis <- function(x, ...){
-  graphics::barplot(
-    height = x$probability, xlab = 'successes', ylab = 'probability',
-    names.arg = x$success, col = #000080
+  barplot(x$probability, xlab = 'successes', ylab = 'probability',
+    names.arg = x$success,las = 1, col = #000080
   )
 }
 
@@ -88,8 +89,10 @@ plot.bindis <- function(x, ...){
 bin_cumulative <- function(trials, prob){
   check_trials(trials)
   check_prob(prob)
-  results <- bin_distribution(trials = trials, prob = prob)
-  results$cumulative <- cumsum(results$prob)
+  success <- c(0:trials)
+  bin_probability <- bin_probability(success, trials, prob)
+  cum_probability <- cumsum(bin_probability)
+  results <- data.frame("success" = success, "probability" = bin_probability, "cumulative" = cum_probability)
   class(results) <- c("bincum", "data.frame")
   return(results)
 }
@@ -108,8 +111,7 @@ plot.bincum <- function(x, ...){
 #' @return object of a class "binvar"
 #' @export
 #' @examples
-#' bin1 <- bin_variable(trials = 10, p = 0.3)
-#' bin1
+#' bin_variable(trials = 10, p = 0.3)
 #'
 
 bin_variable <- function(trials, prob){
@@ -121,12 +123,11 @@ bin_variable <- function(trials, prob){
 }
 
 #' @export
-print.binvar <- function(x, ...) {
-  print("Binomial variable")
-  cat("\n")
-  print(noquote("Parameters"))
-  print(noquote(paste("- number of trials:", x$trials)))
-  print(noquote(paste("- prob of success:", x$prob)))
+print.binvar <- function(bin_variable) {
+  cat('"Binomial variable"\n')
+  cat('"Parameters"\n')
+  cat("- number of trials:", bin_variable$trials, '\n')
+  cat("- prob of success:", bin_variable$prob)
 
 }
 
