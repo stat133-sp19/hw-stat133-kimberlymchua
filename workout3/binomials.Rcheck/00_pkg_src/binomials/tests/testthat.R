@@ -1,4 +1,4 @@
 library(testthat)
 library(binomials)
 
-test_check("binomials")
+test_check("binomial")

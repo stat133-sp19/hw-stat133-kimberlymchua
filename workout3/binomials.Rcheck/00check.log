@@ -20,9 +20,7 @@
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking DESCRIPTION meta-information ... OK
-* checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘devtools-flow.R’
+* checking top-level files ... OK
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
@@ -82,10 +80,4 @@ Extensions’ manual.
 Files in the 'vignettes' directory but no files in 'inst/doc':
   ‘introduction.Rmd’
 Package has no Sweave vignette sources and no VignetteBuilder field.
-* checking examples ... NONE
-* checking for unstated dependencies in ‘tests’ ... WARNING
-'library' or 'require' call not declared from: ‘testthat’
-* checking tests ... OK
-  Running ‘testthat.R’
-* DONE
-Status: 4 WARNINGs, 2 NOTEs
+* checking examples ...

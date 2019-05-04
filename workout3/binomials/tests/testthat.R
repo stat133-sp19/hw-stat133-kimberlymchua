@@ -1,4 +1,4 @@
 library(testthat)
 library(binomials)
 
-devtools::test()
+test_check("binomial")
