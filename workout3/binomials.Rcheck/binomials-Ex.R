@@ -32,9 +32,6 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 # default
 bin_choose(n = 5, k = 2)
-bin_choose(5, 0)
-bin_choose(5, 1:3)
-
 
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")

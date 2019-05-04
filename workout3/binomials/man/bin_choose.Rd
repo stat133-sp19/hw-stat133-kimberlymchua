@@ -20,8 +20,6 @@ the number of calculations in which k  successes can occur in n trials
 calculates the number of combinations in which k successes can occur in n trials
 }
 \examples{
-# default
 bin_choose(n = 5, k = 2)
 bin_choose(5, 0)
-bin_choose(5, 1:3)
 }
