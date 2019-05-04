@@ -9,7 +9,6 @@
 #' @export
 #' @examples
 #' bin_choose(n = 5, k = 2)
-#' bin_choose(5, 0)
 
 bin_choose <- function(k, n){
   if (k > n){
@@ -235,8 +234,8 @@ bin_skewness <- function(trials, prob){
 #' @return the kurtosis of the binomial
 #' @examples
 #' # 10 trials with probability of success 0.5
-#' bin_kurtosis(10, 0.5)
-#'
+#' bin_kurtosis(trials = 10, prob = 0.5)
+
 
 bin_kurtosis <- function(trials, prob){
   check_trials(trials)

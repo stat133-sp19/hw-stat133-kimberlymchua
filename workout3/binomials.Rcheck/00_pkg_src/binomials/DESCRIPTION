@@ -14,4 +14,4 @@ RoxygenNote: 6.1.1
 Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-05-04 06:28:56 UTC; kimberlychua
+Packaged: 2019-05-04 06:51:53 UTC; kimberlychua

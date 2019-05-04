@@ -30,8 +30,8 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ### ** Examples
 
-# default
 bin_choose(n = 5, k = 2)
+
 
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
@@ -90,8 +90,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 # 10 trials with probability of success 0.5
-bin_kurtosis(10, 0.5)
-
+bin_kurtosis(trials = 10, prob = 0.5)
 
 
 

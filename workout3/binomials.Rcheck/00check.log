@@ -43,12 +43,6 @@ summary.binvar:
 
 See section ‘Generic functions and methods’ in the ‘Writing R
 Extensions’ manual.
-
-Found the following apparent S3 methods exported but not registered:
-  plot.bincum plot.bindis print.binvar print.summary.binvar
-  summary.binvar
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
@@ -62,14 +56,7 @@ to your NAMESPACE file.
 * checking Rd metadata ... OK
 * checking Rd line widths ... OK
 * checking Rd cross-references ... OK
-* checking for missing documentation entries ... WARNING
-Undocumented code objects:
-  ‘aux_kurtosis’ ‘aux_mean’ ‘aux_mode’ ‘aux_skewness’ ‘aux_variance’
-  ‘check_prob’ ‘check_success’ ‘check_trials’ ‘plot.bincum’
-  ‘plot.bindis’ ‘print.binvar’ ‘print.summary.binvar’ ‘summary.binvar’
-All user-level objects in a package should have documentation entries.
-See chapter ‘Writing R documentation files’ in the ‘Writing R
-Extensions’ manual.
+* checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... WARNING
 Documented arguments not in \usage in documentation object 'bin_choose':
@@ -84,28 +71,4 @@ Extensions’ manual.
 * checking for unstated dependencies in examples ... OK
 * checking installed files from ‘inst/doc’ ... OK
 * checking files in ‘vignettes’ ... OK
-* checking examples ... ERROR
-Running examples in ‘binomials-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: bin_choose
-> ### Title: binomial choose
-> ### Aliases: bin_choose
-> 
-> ### ** Examples
-> 
-> # default
-> bin_choose(n = 5, k = 2)
-[1] 0.5084746
-> bin_choose(5, 0)
-Error in bin_choose(5, 0) : k cannot be greater than n
-Execution halted
-* checking for unstated dependencies in ‘tests’ ... OK
-* checking tests ... OK
-  Running ‘testthat.R’
-* checking for unstated dependencies in vignettes ... OK
-* checking package vignettes in ‘inst/doc’ ... OK
-* checking re-building of vignette outputs ... OK
-* DONE
-Status: 1 ERROR, 3 WARNINGs, 2 NOTEs
+* checking examples ...

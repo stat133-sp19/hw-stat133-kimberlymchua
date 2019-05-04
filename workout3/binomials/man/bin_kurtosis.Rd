@@ -19,6 +19,5 @@ Calculates the kurtosis of the binomal distribution
 }
 \examples{
 # 10 trials with probability of success 0.5
-bin_kurtosis(10, 0.5)
-
+bin_kurtosis(trials = 10, prob = 0.5)
 }

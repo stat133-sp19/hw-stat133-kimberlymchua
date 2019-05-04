@@ -21,5 +21,4 @@ calculates the number of combinations in which k successes can occur in n trials
 }
 \examples{
 bin_choose(n = 5, k = 2)
-bin_choose(5, 0)
 }
