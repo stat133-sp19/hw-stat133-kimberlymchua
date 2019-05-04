@@ -133,16 +133,41 @@ summary.binvar <- function(bin_variable){
   cat('"Summary Binomial"\n\n')
 
   cat('"Parameters"\n')
-  cat("- number of trials:", trials, '\n')
-  cat("- prob of success:", prob)
+  cat("- number of trials:", bin_variable$trials, '\n')
+  cat("- prob of success:", bin_variable$prob)
 
   cat('"Measures"\n')
-  cat("- mean:", bin_mean(trials, prob), '\n')
-  cat("- variance:", bin_variance(trials, prob), '\n')
-  cat("- mode:", bin_mode(trials, prob), '\n')
-  cat("- skewness:", bin_mode(trials, prob), '\n')
-  cat("- kurtosis:", bin_mode(trials, prob), '\n')
+  cat("- mean:", aux_mean(bin_variable$trials, bin_variable$prob), '\n')
+  cat("- variance:", aux_variance(bin_variable$trials, bin_variable$prob), '\n')
+  cat("- mode:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
+  cat("- skewness:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
+  cat("- kurtosis:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
 }
+
+#' @export
+print.summary.binvar <- function(bin_variable){
+    cat('"Summary Binomial"\n\n')
+
+    cat('"Parameters"\n')
+    cat("- number of trials:", bin_variable$trials, '\n')
+    cat("- prob of success:", bin_variable$prob)
+
+    cat('"Measures"\n')
+    cat("- mean:", aux_mean(bin_variable$trials, bin_variable$prob), '\n')
+    cat("- variance:", aux_variance(bin_variable$trials, bin_variable$prob), '\n')
+    cat("- mode:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
+    cat("- skewness:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
+    cat("- kurtosis:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
+  }
+
+#' @title binomial mean
+#' @description Calculates the mean of the binomal distribution
+#' @param trials number of trials; is integer
+#' @param prob probability of success; is a double
+#' @return the average of the binomial distribution
+#' @examples
+#' # 10 trials with probability of success 0.7
+#' bin_mean(10, 0.7)
 
 bin_mean <- function(trials, prob){
   check_trials(trials)
@@ -151,12 +176,32 @@ bin_mean <- function(trials, prob){
   return(mean)
 }
 
+#' @title binomial variance
+#' @description Calculates the variance of the binomal distribution
+#' @param trials number of trials; is an integer
+#' @param prob probability of success; is a probability
+#' @return the variance of the binomial
+#' @examples
+#' # 10 trials with probability of success 0.5
+#' bin_variance(10, 0.5)
+#'
+
 bin_variance <- function(trials, prob){
   check_trials(trials)
   check_prob(prob)
   variance <- aux_variance(trials, prob)
   return(variance)
 }
+
+#' @title binomial mode
+#' @description Calculates the mode of the binomal distribution
+#' @param trials number of trials; is an integer
+#' @param prob probability of success; is a probability
+#' @return the mode of the binomial
+#' @examples
+#' # 10 trials with probability of success 0.5
+#' bin_mode(10, 0.5)
+#'
 
 bin_mode <- function(trials, prob){
   check_trials(trials)
@@ -165,12 +210,32 @@ bin_mode <- function(trials, prob){
   return(mode)
 }
 
+#' @title binomial skewness
+#' @description Calculates the skewness of the binomal distribution
+#' @param trials number of trials; is an integer
+#' @param prob probability of success; is a probability
+#' @return the skewness of the binomial
+#' @examples
+#' # 10 trials with probability of success 0.5
+#' bin_skewness(10, 0.5)
+#'
+
 bin_skewness <- function(trials, prob){
   check_trials(trials)
   check_prob(prob)
   skewness <- aux_skewness(trials, prob)
   return(skewness)
 }
+
+#' @title binomial kurtosis
+#' @description Calculates the kurtosis of the binomal distribution
+#' @param trials number of trials; is an integer
+#' @param prob probability of success; is a probability
+#' @return the kurtosis of the binomial
+#' @examples
+#' # 10 trials with probability of success 0.5
+#' bin_kurtosis(10, 0.5)
+#'
 
 bin_kurtosis <- function(trials, prob){
   check_trials(trials)
