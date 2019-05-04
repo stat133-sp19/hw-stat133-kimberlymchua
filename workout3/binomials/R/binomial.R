@@ -15,8 +15,8 @@ bin_choose <- function(k, n){
   if (k > n){
     stop("k cannot be greater than n")
   }
-  top <- factorial(trials)
-  bottom <- factorial(success) * (factorial(trials) - factorial(success))
+  top <- factorial(n)
+  bottom <- factorial(k) * (factorial(n) - factorial(k))
   choose_bin <- top/bottom
   return(choose_bin)
 }
@@ -176,33 +176,33 @@ plot.bincum <- function(bin_cumulative){
 bin_variable <- function(trials, prob){
   check_trials(trials)
   check_prob(prob)
-  result <- list(trials, prob)
+  result <- c(trials, prob)
   class(binvar) = c("binvar")
+  return(result)
 }
 
 #' @export
 print.binvar <- function(bin_variable){
-  print("Binomial Variable")
-
-  print("Parameters")
-  cat("- number of trials:", trials)
+  cat('"Binomial Variable"\n\n')
+  cat('"Parameters"\n')
+  cat("- number of trials:", trials, '\n')
   cat("- prob of success:", prob)
 }
 
 #' @export
 summary.binvar <- function(bin_variable){
-  print("Summary Binomial")
+  cat('"Summary Binomial"\n\n')
 
-  print("Parameters")
-  cat("- number of trials:", trials)
+  cat('"Parameters"\n')
+  cat("- number of trials:", trials, '\n')
   cat("- prob of success:", prob)
 
-  print("Measures")
-  cat("- mean:", bin_mean(trials, prob))
-  cat("- variance:", bin_variance(trials, prob))
-  cat("- mode:", bin_mode(trials, prob))
-  cat("- skewness:", bin_mode(trials, prob))
-  cat("- kurtosis:", bin_mode(trials, prob))
+  cat('"Measures"\n')
+  cat("- mean:", bin_mean(trials, prob), '\n')
+  cat("- variance:", bin_variance(trials, prob), '\n')
+  cat("- mode:", bin_mode(trials, prob), '\n')
+  cat("- skewness:", bin_mode(trials, prob), '\n')
+  cat("- kurtosis:", bin_mode(trials, prob), '\n')
 }
 
 bin_mean <- function(trials, prob){
