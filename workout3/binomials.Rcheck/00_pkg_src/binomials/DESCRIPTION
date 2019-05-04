@@ -9,5 +9,9 @@ Description: This package binomials will allow the user to explore how to calcal
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
+Collate: auxiliary_private.R main_binomial.R checker_private.R
+RoxygenNote: 6.1.1
+Suggests: knitr, rmarkdown, testthat
+VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-05-04 06:06:20 UTC; kimberlychua
+Packaged: 2019-05-04 06:28:56 UTC; kimberlychua

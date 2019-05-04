@@ -19,8 +19,11 @@
 * checking whether package ‘binomials’ can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
+* checking ‘build’ directory ... OK
 * checking DESCRIPTION meta-information ... OK
-* checking top-level files ... OK
+* checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘devtools-flow.R’
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
@@ -33,20 +36,10 @@
 * checking whether the namespace can be unloaded cleanly ... OK
 * checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... WARNING
-print:
-  function(x, ...)
-print.binvar:
-  function(bin_variable)
-
-print:
-  function(x, ...)
-print.summary.binvar:
-  function(bin_variable)
-
 summary:
   function(object, ...)
 summary.binvar:
-  function(bin_variable)
+  function(x, ...)
 
 See section ‘Generic functions and methods’ in the ‘Writing R
 Extensions’ manual.
@@ -65,19 +58,54 @@ Undefined global functions or variables:
 Consider adding
   importFrom("graphics", "barplot")
 to your NAMESPACE file.
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
 * checking for missing documentation entries ... WARNING
 Undocumented code objects:
   ‘aux_kurtosis’ ‘aux_mean’ ‘aux_mode’ ‘aux_skewness’ ‘aux_variance’
-  ‘bin_choose’ ‘bin_cumulative’ ‘bin_distribution’ ‘bin_kurtosis’
-  ‘bin_mean’ ‘bin_mode’ ‘bin_probability’ ‘bin_skewness’ ‘bin_variable’
-  ‘bin_variance’ ‘check_prob’ ‘check_success’ ‘check_trials’
-  ‘plot.bincum’ ‘plot.bindis’ ‘print.binvar’ ‘print.summary.binvar’
-  ‘summary.binvar’
+  ‘check_prob’ ‘check_success’ ‘check_trials’ ‘plot.bincum’
+  ‘plot.bindis’ ‘print.binvar’ ‘print.summary.binvar’ ‘summary.binvar’
 All user-level objects in a package should have documentation entries.
 See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
-* checking files in ‘vignettes’ ... WARNING
-Files in the 'vignettes' directory but no files in 'inst/doc':
-  ‘introduction.Rmd’
-Package has no Sweave vignette sources and no VignetteBuilder field.
-* checking examples ...
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... WARNING
+Documented arguments not in \usage in documentation object 'bin_choose':
+  ‘prob’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... ERROR
+Running examples in ‘binomials-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: bin_choose
+> ### Title: binomial choose
+> ### Aliases: bin_choose
+> 
+> ### ** Examples
+> 
+> # default
+> bin_choose(n = 5, k = 2)
+[1] 0.5084746
+> bin_choose(5, 0)
+Error in bin_choose(5, 0) : k cannot be greater than n
+Execution halted
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 ERROR, 3 WARNINGs, 2 NOTEs

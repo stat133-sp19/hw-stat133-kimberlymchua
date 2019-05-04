@@ -1,8 +1,8 @@
 * installing *source* package ‘binomials’ ...
 ** R
+** inst
 ** byte-compile and prepare package for lazy loading
 ** help
-No man pages found in package  ‘binomials’ 
 *** installing help indices
 ** building package indices
 ** installing vignettes

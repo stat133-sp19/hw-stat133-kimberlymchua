@@ -8,10 +8,8 @@
 #' @return the number of calculations in which k  successes can occur in n trials
 #' @export
 #' @examples
-#' # default
 #' bin_choose(n = 5, k = 2)
 #' bin_choose(5, 0)
-#' bin_choose(5, 1:3)
 
 bin_choose <- function(k, n){
   if (k > n){
@@ -123,44 +121,44 @@ bin_variable <- function(trials, prob){
 }
 
 #' @export
-print.binvar <- function(bin_variable) {
+print.binvar <- function(x, ...) {
   cat('"Binomial variable"\n')
   cat('"Parameters"\n')
-  cat("- number of trials:", bin_variable$trials, '\n')
-  cat("- prob of success:", bin_variable$prob)
+  cat("- number of trials:", x$trials, '\n')
+  cat("- prob of success:", x$prob)
 
 }
 
 #' @export
-summary.binvar <- function(bin_variable){
+summary.binvar <- function(x, ...){
   cat('"Summary Binomial"\n\n')
 
   cat('"Parameters"\n')
-  cat("- number of trials:", bin_variable$trials, '\n')
-  cat("- prob of success:", bin_variable$prob)
+  cat("- number of trials:", x$trials, '\n')
+  cat("- prob of success:", x$prob)
 
   cat('"Measures"\n')
-  cat("- mean:", aux_mean(bin_variable$trials, bin_variable$prob), '\n')
-  cat("- variance:", aux_variance(bin_variable$trials, bin_variable$prob), '\n')
-  cat("- mode:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
-  cat("- skewness:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
-  cat("- kurtosis:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
+  cat("- mean:", aux_mean(x$trials, x$prob), '\n')
+  cat("- variance:", aux_variance(x$trials, x$prob), '\n')
+  cat("- mode:", aux_mode(x$trials, x$prob), '\n')
+  cat("- skewness:", aux_mode(x$trials, x$prob), '\n')
+  cat("- kurtosis:", aux_mode(x$trials, x$prob), '\n')
 }
 
 #' @export
-print.summary.binvar <- function(bin_variable){
+print.summary.binvar <- function(x, ...){
     cat('"Summary Binomial"\n\n')
 
     cat('"Parameters"\n')
-    cat("- number of trials:", bin_variable$trials, '\n')
-    cat("- prob of success:", bin_variable$prob)
+    cat("- number of trials:", x$trials, '\n')
+    cat("- prob of success:", x$prob)
 
     cat('"Measures"\n')
-    cat("- mean:", aux_mean(bin_variable$trials, bin_variable$prob), '\n')
-    cat("- variance:", aux_variance(bin_variable$trials, bin_variable$prob), '\n')
-    cat("- mode:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
-    cat("- skewness:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
-    cat("- kurtosis:", aux_mode(bin_variable$trials, bin_variable$prob), '\n')
+    cat("- mean:", aux_mean(x$trials, x$prob), '\n')
+    cat("- variance:", aux_variance(x$trials, x$prob), '\n')
+    cat("- mode:", aux_mode(x$trials, x$prob), '\n')
+    cat("- skewness:", aux_mode(x$trials, x$prob), '\n')
+    cat("- kurtosis:", aux_mode(x$trials, x$prob), '\n')
   }
 
 #' @title binomial mean

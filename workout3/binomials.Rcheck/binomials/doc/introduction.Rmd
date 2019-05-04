@@ -1,0 +1,268 @@
+---
+title: "Getting Started with Binomials"
+author: "Kimberly Chua"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to cointoss}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(binomials)
+```
+
+This binomial package contains functions to help calculate probabilites of a binomial random variable.  
+---
+
+##Private Auxiliary Functions: Summary Measures
+There are many **Summary measures** that can be used to look at a random variable X.
+
+**aux_mean()**
+
+- The mean, or expected value, of a binomial distribution is the expected number of successes in a fixed number of trials. This will return the mean of a binomial random variable, given the number of trials and the probability of success on each trial. 
+- Usage
+    - `aux_mean(trials, prob)`
+- Parameters   
+    - *trials*: an integer or double that gives the number of trials  
+    - *prob*: an integer or double that gives the probability of success
+- Example  
+    - `aux_mean(10, 0.3)`
+
+**aux_variance()**
+
+- This will return the variance, given the number of trials and the probability of success.  
+- Usage  
+    - `aux_variance(trials, prob)`
+- Parameters 
+    - *trials*: an integer or double that gives the number of trials  
+    - *prob*: an integer or double that gives the probability of success
+- Example
+    - `aux_variance(10, 0.3)`
+
+**aux_mode()**
+
+- This will return the mode, given the number of trials and the probability of success. If the number of trials is even, the function returns one mode value. If the number of trials is odd, the function returns two mode values. The mode is the most likely number of success in a fixed number of trials with probability of success on each trial.
+- Usage 
+    - `aux_mode(trials, prob)`
+- Parameters  
+    - *trials*: an integer or double that gives the number of trials  
+    - *prob*: an integer or double that gives the probability of success
+- Example
+    - `aux_mode(10, 0.3)`
+
+**aux_skewness()**
+
+- This will return the skewness, given the number of trials and the probability of success. Skewness is a measure of the asymmetry of the probability distribution of a random variable about its mean. 
+-Usage  
+    - `aux_skewness(trials, prob)`
+- Parameters  
+    - *trials*: an integer or double that gives the number of trials  
+    - *prob*: an integer or double that gives the probability of success
+- Example
+    - `aux_skewness(10, 0.3)`
+
+**aux_kurtosis()**
+
+- This will return the kurtosis, given the number of trials and the probability of success. Kurtosis can be used to describe the shape of a probability distribution.  
+- Usage  
+    - `aux_kurtosis(trials, prob)`
+- Parameters 
+    - *trials*: an integer or double that gives the number of trials  
+    - *prob*: an integer or double that gives the probability of success
+- Example
+    - `aux_kurtosis(10, 0.3)`
+    
+---
+
+##Private Auxiliary Functions: Checker Functions
+These **checker functions** ensures that certain criteria are met so that the package works smoothly.
+
+**check_prob()**
+
+- This will return TRUE for the value of value of prob (probability) is between 0 and 1, inclusive. Otherwise, it will give a warning and no longer execute.
+- Usage
+    - `check_prob(prob)`
+- Parameters 
+    - *prob*: an integer or double that gives the probability of success
+
+**check_trials()**
+
+- This will return TRUE for the value of trials is a non-negative number (greater than or equal to 0). Otherwise, it will give a warning and no longer execute.
+- Usage
+    - `check_trials(trials)`
+- Parameters 
+    - *trials*: an integer or double that gives the number of trials  
+
+**check_success()**
+
+- This will return TRUE if all values in success are non-negative, and if success is less than trialss. Otherwise, it will give a warning and no longer execute.
+- Usage  
+    - `check_success(success, trials)`  
+- Parameters 
+    - *trials*: an integer or double that gives the number of trials  
+    - *success*: a vector that gives the number of successes  
+
+---
+
+## Main Binomial Functions
+The **main binomial functions** utilize both the **checker functions** and **summary functions** to compute various binomial calculations.
+
+**bin_choose()**
+
+- This function will calculate and return the number of combinations in which k successes can occur in n trials.    
+- The function will return an error if criteria is not met: k successes must be less than n trials 
+-Usage  
+    - `bin_choose(n, k)`
+- Parameters 
+    - *n*: an integer that gives the number of trials  
+    - *k*: an integer that gives the number of success
+- Example
+    - `bin_choose(n = 10, k = 2)`  
+    - `bin_choose(15, 0)`  
+    - `bin_choose(5, 1:3)`
+
+**bin_probability()**
+
+- This function will calculate and return the binomial probability of having a number of successes in a fixed amount of trials. 
+- The function will return an error if the arguments do not meet the criteria.
+- Usage  
+    - `bin_probability(success, trials, prob)`
+- Parameters  
+    - *success*: an integer that gives the number of trials  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_probability(success = 2, trials = 5, prob = 0.5)`  
+    - `bin_probability(success = 0:2, trials = 5, prob = 0.5)`  
+    - `bin_probability(success = 55, trials = 100, prob = 0.45)`
+
+**bin_distribution()**
+
+- This function will return a dataframe with the probability distribution. The columns have the number of successes and respective binomial probabilities.  
+- Dataframe contains the '*bindis*' class
+- Usage  
+    - `bin_distribution(trials, prob)` 
+- Parameters  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_distribution(trials = 5, prob = 0.5)`
+```{r, echo=FALSE}
+bin_distribution <- function(trials, prob){
+  bindis <- data.frame(success=(0:trials), probability = bin_probability(success = 0:trials, trials = trials, prob = prob))
+  class(bindis) = c("bindis", "data.frame")
+  return(bindis)
+}
+
+```
+- It contains the *method* **plot.bindis()** that will graph a barplot to display the probability histogram of a binomial distribution object '*bindis*'.
+
+  
+**bin_cumulative()**
+
+- This will return a dataframe with the probability distribution and the cumulative probabilities.  
+- Dataframe contains the '*bincum*' class
+-  Usage  
+    - 'bin_cumulative(trials, prob)'  
+- Parameters 
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_cumulative(trials = 5, prob = 0.5)`
+  
+```{r, echo=FALSE}
+bin_cumulative <- function(trials, prob){
+  test <- bin_probability(success = 0:trials, trials = trials, prob = prob)
+  cum_sum <- cumsum(test)
+  dframe <- data.frame(success = c(0:trials), probability = test, cumulative = cum_sum)
+  class(dframe) <- c("bincum", "data.frame")
+  return(dframe)
+}
+```
+- It contains the *method* **plot.bincum()** that plots the cumulative probabilities of a binomial distribution object '*bincum*'.
+
+
+**bin_variable()**
+ 
+- This will return a binomial random variable object with a list of named elements.  
+- It contains the '*binvar*' class.
+- Usage  
+    - `bin_variable(trials, prob)`  
+- Parameters  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_variable(trials = 10, prob = 0.3)`  
+    
+- It contains the *method* **print.binvar()** that prints the contents of an object '*binvar*'.  
+- It contains the *method* **summary.binvar()** that prints the contents of an object.
+
+**bin_mean()**
+ 
+- This will return the binomial mean.   
+- This will return an error if arguments are invalid.
+- Usage  
+    - `bin_mean(trials, prob)`
+- Parameters  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_mean(10, 0.3)`
+
+**bin_variance()**
+
+- This will return the binomial variance.  
+- This will return an error if arguments are invalid.
+- Usage  
+    - `bin_variance(trials, prob)`
+- Parameters  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_variance(10, 0.3)`
+
+**bin_mode()**
+
+- This will return the binomial mode.   
+- This will return an error if arguments are invalid.
+- Usage  
+   - `bin_mode(trials, prob)`
+- Parameters  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_mode(10, 0.3)`
+
+**bin_skewness()**
+
+- This will return the binomial skewness.   
+- This will return an error if arguments are are invalid.
+-  Usage  
+    - `bin_skewness(trials, prob)`
+- Parameters  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_skewness(10, 0.3)`
+
+**bin_kurtosis()**
+
+- This will return the binomial kurtosis.   
+- This will return an error if arguments are not valid.
+- Usage  
+    - `bin_kurtosis(trials, prob)`
+- Parameters  
+    - *trials*: an integer that gives the number of success  
+    - *prob*: an integer that gives the probability of success
+- Example
+    - `bin_kurtosis(10, 0.3)`
